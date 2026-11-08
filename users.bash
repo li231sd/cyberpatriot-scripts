@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MINT script made for cyberpatriot 19 (20206-2027) 
+# MINT script made for cyberpatriot 19 (2026-2027) 
 
 set -Eeuo pipefail
 
