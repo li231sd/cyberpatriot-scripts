@@ -30,6 +30,10 @@ USERS=(
 )
 
 ALL_USERS=("${ADMINS[@]}" "${USERS[@]}")
+declare -A AUTHORIZED_USERS=()
+for user in "${ALL_USERS[@]}"; do
+    AUTHORIZED_USERS["$user"]=1
+done
 
 # Configs
 
@@ -200,7 +204,7 @@ while IFS=: read -r user password uid gid gecos home shell; do
     # skip non-login service accts 
     [[ "$shell" == */nologin || "$shell" == */false ]] && continue
 
-    if is_authorized "$user"; then
+    if [[ ${AUTHORIZED_USERS[$user]+exists} ]]; then
         continue
     fi
 
